@@ -3,142 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Gestão Escolar</title>
+  <title>Sistema Escolar Completo</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    body {
-      background-color: #f4f6f8;
-      min-height: 100vh;
-    }
-    .login-container, .sistema-container {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .login-box {
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      max-width: 360px;
-      width: 100%;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #2c3e50;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #34495e;
-    }
-    .error {
-      color: red;
-      font-size: 14px;
-      text-align: center;
-      min-height: 18px;
-    }
-
-    /* Sistema */
-    .sistema {
-      display: flex;
-      height: 100vh;
-    }
-    .sidebar {
-      width: 220px;
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar h2 {
-      font-size: 20px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .menu-item {
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .menu-item:hover, .menu-item.active {
-      background-color: #34495e;
-    }
-    .logout {
-      margin-top: auto;
-      padding: 10px;
-      background-color: #e74c3c;
-      text-align: center;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .logout:hover {
-      background-color: #c0392b;
-    }
-    .main-content {
-      flex: 1;
-      padding: 30px;
-    }
-    .card {
-      background-color: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #555;
-    }
-    @media (max-width: 768px) {
-      .sistema {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-      }
-      .menu-item, .logout {
-        flex: 1;
-        text-align: center;
-      }
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",Arial,sans-serif;}
+    body{background:#0e1116;color:#ecf0f1;display:flex;justify-content:center;align-items:center;min-height:100vh;}
+    .login-container{display:flex;justify-content:center;align-items:center;width:100%;min-height:100vh;background:radial-gradient(circle at top left,#1a1f2b,#0e1116);}
+    .login-box{background:rgba(255,255,255,0.05);padding:40px;border-radius:16px;width:90%;max-width:400px;text-align:center;}
+    input{width:100%;padding:10px;margin-bottom:12px;border:none;border-radius:8px;background:rgba(255,255,255,0.1);color:#fff;}
+    button{padding:10px 15px;border:none;border-radius:8px;cursor:pointer;font-weight:600;}
+    .sistema-container{display:none;width:100%;height:100vh;}
+    .sistema{display:flex;height:100%;}
+    .sidebar{width:250px;background:#111827;padding:20px;display:flex;flex-direction:column;}
+    .menu-item{padding:12px;border-radius:8px;margin-bottom:8px;cursor:pointer;color:#d1d5db;}
+    .menu-item:hover,.menu-item.active{background:#1f2937;color:#fff;}
+    .logout{margin-top:auto;background:linear-gradient(135deg,#ef4444,#dc2626);text-align:center;padding:12px;border-radius:8px;cursor:pointer;}
+    .main-content{flex:1;padding:30px;overflow-y:auto;background:linear-gradient(to bottom right,#111827,#0e1116);}
+    table{width:100%;border-collapse:collapse;margin-top:15px;}
+    th,td{padding:10px;border-bottom:1px solid #1f2937;text-align:left;}
+    th{background:#1f2937;}
+    tr:hover td{background:rgba(255,255,255,0.05);}
+    .add-btn{background:linear-gradient(135deg,#22c55e,#16a34a);color:white;}
+    .edit-btn{background:#3b82f6;color:white;}
+    .delete-btn{background:#ef4444;color:white;}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:999;}
+    .modal-content{background:#1f2937;padding:25px;border-radius:12px;width:90%;max-width:500px;max-height:80vh;overflow-y:auto;}
+    .disciplinas{margin-top:10px;}
+    .disciplina{background:rgba(255,255,255,0.05);padding:10px;margin-bottom:10px;border-radius:8px;}
+    .disciplina input{width:calc(100% - 20px);margin-bottom:6px;}
+    .add-disciplina{margin-top:10px;background:#2563eb;color:white;width:100%;}
   </style>
 </head>
 <body>
-
   <!-- LOGIN -->
   <div class="login-container" id="loginSection">
     <div class="login-box">
-      <h2>Login</h2>
-      <input type="text" id="usuario" placeholder="Usuário" />
-      <input type="password" id="senha" placeholder="Senha" />
-      <button onclick="fazerLogin()">Entrar</button>
-      <div class="error" id="mensagemErro"></div>
+      <h2>🎓 Login</h2>
+      <input type="text" id="usuario" placeholder="Usuário">
+      <input type="password" id="senha" placeholder="Senha">
+      <button class="add-btn" onclick="fazerLogin()">Entrar</button>
+      <p id="mensagemErro" style="color:#ef4444;margin-top:10px;"></p>
     </div>
   </div>
 
@@ -146,7 +49,7 @@
   <div class="sistema-container" id="sistemaSection">
     <div class="sistema">
       <div class="sidebar">
-        <h2>Gestão Escolar</h2>
+        <h2>📘 Escola</h2>
         <div class="menu-item active" onclick="mostrar('inicio', this)">Início</div>
         <div class="menu-item" onclick="mostrar('alunos', this)">Alunos</div>
         <div class="menu-item" onclick="mostrar('professores', this)">Professores</div>
@@ -155,78 +58,201 @@
         <div class="menu-item" onclick="mostrar('frequencia', this)">Frequência</div>
         <div class="logout" onclick="logout()">Sair</div>
       </div>
+
       <div class="main-content">
-        <div class="card" id="conteudo">
-          <h1>Bem-vindo!</h1>
-          <p>Selecione uma opção no menu.</p>
+        <div id="conteudo">
+          <h1>Bem-vindo 👋</h1>
+          <p>Escolha uma opção no menu lateral para começar.</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL CRUD -->
+  <div class="modal" id="modalForm">
+    <div class="modal-content">
+      <h3 id="tituloModal">Adicionar</h3>
+      <div id="formCampos"></div>
+      <div style="margin-top:10px;text-align:right;">
+        <button class="add-btn" onclick="salvarNovo()">Salvar</button>
+        <button class="delete-btn" onclick="fecharModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL NOTAS -->
+  <div class="modal" id="modalNotas">
+    <div class="modal-content">
+      <h3 id="tituloNotas">Boletim</h3>
+      <div id="disciplinasContainer" class="disciplinas"></div>
+      <button class="add-disciplina" onclick="adicionarDisciplina()">+ Adicionar disciplina</button>
+      <div style="margin-top:10px;text-align:right;">
+        <button class="add-btn" onclick="salvarNotas()">Salvar</button>
+        <button class="delete-btn" onclick="fecharModalNotas()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BOLETIM -->
+  <div class="modal" id="modalBoletim">
+    <div class="modal-content">
+      <h3 id="tituloBoletim"></h3>
+      <div id="tabelaBoletim"></div>
+      <button class="delete-btn" style="margin-top:10px;width:100%;" onclick="fecharBoletim()">Fechar</button>
+    </div>
+  </div>
+
   <script>
-    // Simples controle de usuário/senha
-    const USUARIO_CORRETO = "admin";
-    const SENHA_CORRETA = "1234";
-
-    function fazerLogin() {
-      const usuario = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value.trim();
-      const msgErro = document.getElementById("mensagemErro");
-
-      if (usuario === USUARIO_CORRETO && senha === SENHA_CORRETA) {
-        localStorage.setItem("logado", "true");
-        mostrarSistema();
-      } else {
-        msgErro.textContent = "Usuário ou senha inválidos.";
-      }
-    }
-
-    function mostrarSistema() {
-      document.getElementById("loginSection").style.display = "none";
-      document.getElementById("sistemaSection").style.display = "flex";
-    }
-
-    function mostrarLogin() {
-      localStorage.removeItem("logado");
-      document.getElementById("sistemaSection").style.display = "none";
-      document.getElementById("loginSection").style.display = "flex";
-    }
-
-    function mostrar(pagina, el) {
-      const conteudo = document.getElementById("conteudo");
-
-      const paginas = {
-        inicio: ["Painel Inicial", "Bem-vindo ao sistema de gestão escolar."],
-        alunos: ["Gerenciar Alunos", "Aqui você poderá cadastrar, editar e visualizar os alunos da escola."],
-        professores: ["Gerenciar Professores", "Aqui você poderá gerenciar os dados dos professores."],
-        turmas: ["Gerenciar Turmas", "Aqui você poderá criar e editar turmas escolares."],
-        notas: ["Lançamento de Notas", "Aqui você poderá lançar e consultar notas dos alunos."],
-        frequencia: ["Controle de Frequência", "Aqui você poderá registrar e consultar a presença dos alunos."]
-      };
-
-      const [titulo, texto] = paginas[pagina] || ["Início", "Conteúdo não encontrado."];
-
-      conteudo.innerHTML = `<h1>${titulo}</h1><p>${texto}</p>`;
-
-      // Marcar item ativo
-      document.querySelectorAll(".menu-item").forEach(item => item.classList.remove("active"));
-      if (el) el.classList.add("active");
-    }
-
-    function logout() {
-      mostrarLogin();
-    }
-
-    // Ao carregar a página
-    window.onload = function () {
-      if (localStorage.getItem("logado") === "true") {
-        mostrarSistema();
-      } else {
-        mostrarLogin();
-      }
+    const USUARIO="admin",SENHA="1234";
+    let dados=JSON.parse(localStorage.getItem("dadosEscola"))||{
+      alunos:[{nome:"Maria Souza",matricula:"A001",turma:"1ºA",idade:14},{nome:"João Lima",matricula:"A002",turma:"1ºA",idade:15}],
+      professores:[{nome:"Ana Paula",disciplina:"Matemática",email:"ana@escola.com"}],
+      turmas:[{nome:"1ºA",turno:"Manhã",sala:"101"}],
+      frequencia:[],
+      notas:[]
     };
-  </script>
+    let paginaAtual="",camposAtuais=[],indiceEdicao=null,alunoSelecionado=null;
 
+    const campos={
+      alunos:["matricula","nome","turma","idade"],
+      professores:["nome","disciplina","email"],
+      turmas:["nome","turno","sala"],
+      frequencia:["aluno","presencas","faltas"]
+    };
+    const titulos={
+      alunos:["Matrícula","Nome","Turma","Idade"],
+      professores:["Nome","Disciplina","Email"],
+      turmas:["Turma","Turno","Sala"],
+      frequencia:["Aluno","Presenças","Faltas"]
+    };
+
+    function salvarLocal(){localStorage.setItem("dadosEscola",JSON.stringify(dados));}
+    function fazerLogin(){
+      const u=document.getElementById("usuario").value.trim();
+      const s=document.getElementById("senha").value.trim();
+      if(u===USUARIO&&s===SENHA){
+        document.getElementById("loginSection").style.display="none";
+        document.getElementById("sistemaSection").style.display="block";
+      } else document.getElementById("mensagemErro").textContent="Usuário ou senha inválidos.";
+    }
+    function logout(){
+      document.getElementById("sistemaSection").style.display="none";
+      document.getElementById("loginSection").style.display="flex";
+    }
+
+    function mostrar(pagina,el){
+      paginaAtual=pagina;
+      document.querySelectorAll(".menu-item").forEach(i=>i.classList.remove("active"));
+      el.classList.add("active");
+      const c=document.getElementById("conteudo");
+      if(pagina==="inicio"){c.innerHTML="<h1>📊 Painel</h1><p>Bem-vindo ao sistema.</p>";return;}
+      if(pagina==="notas"){mostrarNotas();return;}
+      camposAtuais=campos[pagina];
+      let html=`<h1>${pagina.charAt(0).toUpperCase()+pagina.slice(1)}</h1>
+        <button class='add-btn' onclick='abrirModal()'>+ Adicionar</button>
+        <table><tr>${titulos[pagina].map(t=>`<th>${t}</th>`).join("")}<th>Ações</th></tr>`;
+      html+=dados[pagina].map((obj,i)=>`
+        <tr>${Object.values(obj).map(v=>`<td>${v}</td>`).join("")}
+          <td><button class='edit-btn' onclick='editarRegistro(${i})'>✏️</button>
+              <button class='delete-btn' onclick='excluirRegistro(${i})'>🗑️</button></td></tr>`).join("");
+      html+="</table>";
+      c.innerHTML=html;
+    }
+
+    function mostrarNotas(){
+      const c=document.getElementById("conteudo");
+      let html="<h1>🧾 Notas</h1><table><tr><th>Aluno</th><th>Ações</th></tr>";
+      html+=dados.alunos.map(a=>`
+        <tr>
+          <td style='cursor:pointer;color:#60a5fa;' onclick="abrirBoletim('${a.nome}')">${a.nome}</td>
+          <td><button class='edit-btn' onclick="abrirNotas('${a.nome}')">Editar Notas</button></td>
+        </tr>`).join("");
+      html+="</table>";
+      c.innerHTML=html;
+    }
+
+    function abrirModal(){
+      indiceEdicao=null;
+      document.getElementById("tituloModal").textContent="Adicionar";
+      document.getElementById("formCampos").innerHTML=camposAtuais.map(c=>`<input type='text' id='campo_${c}' placeholder='${c}'>`).join("");
+      document.getElementById("modalForm").style.display="flex";
+    }
+    function editarRegistro(i){
+      indiceEdicao=i;
+      const r=dados[paginaAtual][i];
+      document.getElementById("tituloModal").textContent="Editar";
+      document.getElementById("formCampos").innerHTML=camposAtuais.map(c=>`<input type='text' id='campo_${c}' value='${r[c]}'>`).join("");
+      document.getElementById("modalForm").style.display="flex";
+    }
+    function salvarNovo(){
+      let novo={};
+      camposAtuais.forEach(c=>novo[c]=document.getElementById("campo_"+c).value.trim());
+      if(indiceEdicao!==null)dados[paginaAtual][indiceEdicao]=novo;
+      else dados[paginaAtual].push(novo);
+      salvarLocal();
+      fecharModal();
+      mostrar(paginaAtual,document.querySelector(`.menu-item.active`));
+    }
+    function excluirRegistro(i){if(confirm("Excluir registro?")){dados[paginaAtual].splice(i,1);salvarLocal();mostrar(paginaAtual,document.querySelector(`.menu-item.active`));}}
+    function fecharModal(){document.getElementById("modalForm").style.display="none";}
+
+    // ---- NOTAS ----
+    function abrirNotas(nome){
+      alunoSelecionado=nome;
+      document.getElementById("tituloNotas").textContent=`Editar notas de ${nome}`;
+      const alunoNotas=dados.notas.find(n=>n.aluno===nome)||{aluno:nome,disciplinas:[]};
+      const c=document.getElementById("disciplinasContainer");
+      c.innerHTML="";
+      alunoNotas.disciplinas.forEach(d=>adicionarDisciplina(d.nome,d.notas));
+      document.getElementById("modalNotas").style.display="flex";
+    }
+    function adicionarDisciplina(nome="",notas=[]){
+      const c=document.getElementById("disciplinasContainer");
+      const div=document.createElement("div");
+      div.className="disciplina";
+      div.innerHTML=`
+        <input type='text' placeholder='Nome da disciplina' value='${nome}'>
+        <input type='text' placeholder='Notas separadas por vírgula' value='${notas.join(", ")}'>
+        <button class='delete-btn' onclick='this.parentElement.remove()'>Remover</button>`;
+      c.appendChild(div);
+    }
+    function salvarNotas(){
+      const disciplinas=document.querySelectorAll(".disciplina");
+      let lista=[];
+      disciplinas.forEach(d=>{
+        const nome=d.children[0].value.trim();
+        const notas=d.children[1].value.split(",").map(n=>parseFloat(n.trim())).filter(n=>!isNaN(n));
+        if(nome)lista.push({nome,notas});
+      });
+      let alunoNotas=dados.notas.find(n=>n.aluno===alunoSelecionado);
+      if(alunoNotas)alunoNotas.disciplinas=lista;
+      else dados.notas.push({aluno:alunoSelecionado,disciplinas:lista});
+      salvarLocal();
+      fecharModalNotas();
+    }
+    function fecharModalNotas(){document.getElementById("modalNotas").style.display="none";}
+
+    function abrirBoletim(nome){
+      const a=dados.notas.find(n=>n.aluno===nome);
+      const div=document.getElementById("tabelaBoletim");
+      if(!a||a.disciplinas.length===0){
+        div.innerHTML="<p style='text-align:center;'>Nenhuma nota cadastrada.</p>";
+      } else {
+        let linhas="",soma=0,total=0;
+        a.disciplinas.forEach(d=>{
+          const media=d.notas.reduce((x,y)=>x+y,0)/d.notas.length;
+          soma+=media;total++;
+          const cor=media>=7?"#22c55e":"#ef4444";
+          linhas+=`<tr><td>${d.nome}</td><td>${d.notas.join(", ")}</td><td style='color:${cor};font-weight:600;'>${media.toFixed(1)}</td></tr>`;
+        });
+        const mg=soma/total;
+        linhas+=`<tr style='background:#1f2937;font-weight:bold;'><td colspan='2' style='text-align:right;'>Média Final:</td><td style='color:${mg>=7?"#22c55e":"#ef4444"};'>${mg.toFixed(1)}</td></tr>`;
+        div.innerHTML=`<table><tr><th>Disciplina</th><th>Notas</th><th>Média</th></tr>${linhas}</table>`;
+      }
+      document.getElementById("tituloBoletim").textContent=`📘 Boletim de ${nome}`;
+      document.getElementById("modalBoletim").style.display="flex";
+    }
+    function fecharBoletim(){document.getElementById("modalBoletim").style.display="none";}
+  </script>
 </body>
 </html>
