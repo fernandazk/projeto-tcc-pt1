@@ -58,10 +58,8 @@ Este sistema é um **protótipo funcional** com fins educacionais. Algumas funci
 
 ---
 
-## 📷 Preview do sistema (opcional)
-
-Você pode adicionar aqui capturas de tela do sistema.  
-Exemplo:
+DOCUMENTAÇAO DO PRÉ PROJETO
 
 https://docs.google.com/document/d/1029akA-xx1xfXOCaZQzWKuYQg1PnrDP2TZEFfgBK9-w/edit?usp=drivesdk
+
 
